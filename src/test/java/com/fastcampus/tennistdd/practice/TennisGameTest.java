@@ -66,6 +66,7 @@ class TennisGameTest {
     }
 
     @Test
+    @DisplayName("게임이 이미 끝났을 때 점수를 추가하면 기대하는 예외를 던진다.")
     void case3() {
         final TennisGame game = new TennisGame();
         game.serverScores();
