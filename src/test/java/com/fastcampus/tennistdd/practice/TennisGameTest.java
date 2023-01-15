@@ -80,4 +80,19 @@ class TennisGameTest {
             .isExactlyInstanceOf(IllegalStateException.class);
     }
 
+    @Test
+    @DisplayName("3 포인트 이상에서 동점이면 DEUCE 이다.")
+    void case4() {
+        final TennisGame game = new TennisGame();
+
+        game.serverScores();
+        game.serverScores();
+        game.serverScores();
+        game.receiverScores();
+        game.receiverScores();
+        game.receiverScores();
+
+        assertThat(game.status()).isEqualTo(TennisGameStatus.DEUCE);
+    }
+
 }
