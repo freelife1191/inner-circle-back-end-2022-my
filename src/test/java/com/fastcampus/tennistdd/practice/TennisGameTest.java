@@ -95,4 +95,20 @@ class TennisGameTest {
         assertThat(game.status()).isEqualTo(TennisGameStatus.DEUCE);
     }
 
+    @Test
+    @DisplayName("DEUCE 일 때 server가 득점하면 ADVANTAGE_IN 이다")
+    void case5() {
+        final TennisGame game = new TennisGame();
+        game.serverScores();
+        game.serverScores();
+        game.serverScores();
+        game.receiverScores();
+        game.receiverScores();
+        game.receiverScores();
+
+        game.serverScores();
+
+        assertThat(game.status()).isEqualTo(TennisGameStatus.ADVANTAGE_IN);
+    }
+
 }

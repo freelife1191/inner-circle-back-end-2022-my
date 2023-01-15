@@ -1,5 +1,5 @@
 package com.fastcampus.tennistdd.practice;
 
 enum TennisGameStatus {
-    FINISHED, DEUCE, STARTED
+    FINISHED, DEUCE, ADVANTAGE_IN, STARTED
 }
