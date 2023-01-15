@@ -27,4 +27,7 @@ class TennisGameTest {
     void case0() {
         new TennisGame();
     }
+
+    private class TennisGame {
+    }
 }
