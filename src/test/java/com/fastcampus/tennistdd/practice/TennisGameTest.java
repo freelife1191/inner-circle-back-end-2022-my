@@ -49,32 +49,4 @@ class TennisGameTest {
         assertThat(game.receiverPoints()).isEqualTo(2);
     }
 
-    private class TennisGame {
-        private int serverPoints;
-        private int receiverPoints;
-
-        public void serverScores() {
-            ++serverPoints;
-        }
-
-        public void receiverScores() {
-            ++receiverPoints;
-        }
-
-        public int serverPoints() {
-            return serverPoints;
-        }
-
-        public int receiverPoints() {
-            return receiverPoints;
-        }
-
-        public TennisGameStatus status() {
-            return TennisGameStatus.STARTED;
-        }
-    }
-
-    private enum TennisGameStatus {
-        STARTED
-    }
 }
