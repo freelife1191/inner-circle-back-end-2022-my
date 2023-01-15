@@ -31,7 +31,7 @@ class TennisGameTest {
 
         assertThat(game.serverPoint()).isZero();
         assertThat(game.receiverPoint()).isZero();
-        assertThat(game.status()).isNotNull();
+        assertThat(game.status()).isEqualTo(TennisGameStatus.STARTED);
     }
 
     private class TennisGame {
@@ -46,5 +46,9 @@ class TennisGameTest {
         public Object status() {
             return new Object();
         }
+    }
+
+    private enum TennisGameStatus {
+        STARTED
     }
 }
