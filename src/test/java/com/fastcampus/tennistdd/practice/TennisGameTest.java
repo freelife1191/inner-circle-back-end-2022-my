@@ -37,5 +37,9 @@ class TennisGameTest {
         public int serverPoint() {
             return 0;
         }
+
+        public int receiverPoint() {
+            return 0;
+        }
     }
 }
