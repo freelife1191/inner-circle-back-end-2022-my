@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Tennis Game
@@ -62,6 +63,20 @@ class TennisGameTest {
         game.serverScores();
 
         assertThat(game.status()).isEqualTo(TennisGameStatus.FINISHED);
+    }
+
+    @Test
+    void case3() {
+        final TennisGame game = new TennisGame();
+        game.serverScores();
+        game.serverScores();
+        game.serverScores();
+        game.serverScores();
+
+        assertThatThrownBy(game::serverScores)
+            .isExactlyInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(game::receiverScores)
+            .isExactlyInstanceOf(IllegalStateException.class);
     }
 
 }
