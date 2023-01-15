@@ -5,10 +5,12 @@ class TennisGame {
     private int receiverPoints;
 
     public void serverScores() {
+        if (isFinished()) throw new IllegalStateException();
         ++serverPoints;
     }
 
     public void receiverScores() {
+        if (isFinished()) throw new IllegalStateException();
         ++receiverPoints;
     }
 
