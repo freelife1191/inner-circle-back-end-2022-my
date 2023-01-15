@@ -49,4 +49,19 @@ class TennisGameTest {
         assertThat(game.receiverPoints()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("한 플레이어가 2점 이상의 점수차로 4점 이상 득점하면 게임이 끝난다.")
+    void case2() {
+        final TennisGame game = new TennisGame();
+
+        game.receiverScores();
+        game.receiverScores();
+        game.serverScores();
+        game.serverScores();
+        game.serverScores();
+        game.serverScores();
+
+        assertThat(game.status()).isEqualTo(TennisGameStatus.FINISHED);
+    }
+
 }
