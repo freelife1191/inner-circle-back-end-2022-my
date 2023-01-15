@@ -42,5 +42,9 @@ class TennisGameTest {
         public int receiverPoint() {
             return 0;
         }
+
+        public Object status() {
+            return new Object();
+        }
     }
 }
