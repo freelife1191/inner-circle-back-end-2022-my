@@ -31,6 +31,7 @@ class TennisGameTest {
 
         assertThat(game.serverPoint()).isZero();
         assertThat(game.receiverPoint()).isZero();
+        assertThat(game.status()).isNotNull();
     }
 
     private class TennisGame {
