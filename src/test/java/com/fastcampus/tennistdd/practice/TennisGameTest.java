@@ -2,6 +2,8 @@ package com.fastcampus.tennistdd.practice;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Tennis Game
  * <p>
@@ -27,9 +29,12 @@ class TennisGameTest {
     void case0() {
         final TennisGame game = new TennisGame();
 
-        game.serverPoint();
+        assertThat(game.serverPoint()).isZero();
     }
 
     private class TennisGame {
+        public int serverPoint() {
+            return 0;
+        }
     }
 }
