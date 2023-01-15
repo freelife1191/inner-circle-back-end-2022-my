@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Fast Campus APIs
+  description: Open API Specification for [Fast Campus Inner Circle Back-end Course 2022](https://fastcampus.co.kr/innercircle_bridge?utm_source=twitter&utm_medium=viral&utm_campaign=prd%5E221107%5E32877&utm_content=fcchannel%5E32877).
+  contact:
+    email: fc.dev@day1company.co.kr
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: healthz
+paths:
+  /healthz:
+    get:
+      tags:
+        - healthz
+      summary: endpoint for application liveliness
+      operationId: healthz
+      responses:
+        200:
+          description: application running

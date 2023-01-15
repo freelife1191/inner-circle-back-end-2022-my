@@ -1,0 +1,95 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id "io.freefair.lombok" version "6.6.1"
+    id 'org.hidetake.swagger.generator' version '2.19.2'
+    id 'java'
+}
+
+group = 'com.fastcampus'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    openApiConfigLocation = "$rootDir/src/main/resources/docs".toString()
+}
+
+dependencies {
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    testImplementation "io.rest-assured:rest-assured:4.4.0"
+    testImplementation 'io.rest-assured:spring-mock-mvc:5.1.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.approvaltests:approvaltests:18.5.0'
+
+    runtimeOnly 'com.h2database:h2'
+
+    // open-api
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
+    swaggerCodegen 'org.openapitools:openapi-generator-cli:6.2.0'
+    compileOnly 'io.swagger.core.v3:swagger-annotations:2.2.4'
+    compileOnly 'org.springframework.boot:spring-boot-starter-validation'
+    compileOnly 'org.openapitools:jackson-databind-nullable:0.2.4'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.json:json:20220924'
+    implementation 'org.apache.commons:commons-lang3'
+}
+
+test {
+    useJUnitPlatform {
+        excludeTags 'IntegrationTest'
+    }
+}
+
+task integrationTest(type: Test) {
+    group 'verification'
+    useJUnitPlatform {
+        includeTags 'IntegrationTest'
+    }
+}
+
+swaggerSources {
+    fastcampus {
+        def apiYaml = "${openApiConfigLocation}/openapi.yml"
+        def configJson = "${openApiConfigLocation}/config.json"
+        inputFile = file(apiYaml)
+        def ignoreFile = file("${openApiConfigLocation}/.openapi-generator-ignore")
+        code {
+            language = 'spring'
+            configFile = file(configJson)
+            rawOptions = ['--ignore-file-override', ignoreFile] as List<String>
+            components = [models: true, apis: true, supportingFiles: 'ApiUtil.java']
+            jvmArgs = ['--add-opens=java.base/java.util=ALL-UNNAMED']
+            dependsOn validation
+        }
+    }
+}
+
+compileJava.dependsOn swaggerSources.fastcampus.code
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["${swaggerSources.fastcampus.code.outputDir}/src/main/java", 'src/main/java']
+        }
+        resources {
+            srcDirs = ["${swaggerSources.fastcampus.code.outputDir}/src/main/resources", 'src/main/resources']
+        }
+    }
+}

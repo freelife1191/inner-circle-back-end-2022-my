@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: inner-circle-back-end-course
+  profiles:
+    active: local
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+    open-in-view: false
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=USER;
+    username: sa
+  sql:
+    init:
+      mode: always
+  output:
+    ansi:
+      enabled: always
+  h2:
+    console:
+      enabled: true
