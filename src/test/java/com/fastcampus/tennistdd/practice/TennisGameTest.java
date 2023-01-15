@@ -25,7 +25,9 @@ class TennisGameTest {
 
     @Test
     void case0() {
-        new TennisGame();
+        final TennisGame game = new TennisGame();
+
+        game.serverPoint();
     }
 
     private class TennisGame {
