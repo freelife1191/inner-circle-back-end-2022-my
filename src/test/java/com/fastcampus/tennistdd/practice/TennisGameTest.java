@@ -41,6 +41,7 @@ class TennisGameTest {
         final TennisGame game = new TennisGame();
 
         game.serverScores();
+        game.receiverScores();
 
         assertThat(game.serverPoint()).isEqualTo(1);
     }
