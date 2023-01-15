@@ -30,6 +30,7 @@ class TennisGameTest {
         final TennisGame game = new TennisGame();
 
         assertThat(game.serverPoint()).isZero();
+        assertThat(game.receiverPoint()).isZero();
     }
 
     private class TennisGame {
