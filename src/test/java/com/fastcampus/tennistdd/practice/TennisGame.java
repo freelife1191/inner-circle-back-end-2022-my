@@ -21,8 +21,11 @@ class TennisGame {
     }
 
     public TennisGameStatus status() {
-        if (2 <= Math.abs(serverPoints - receiverPoints) && 4 <= Math.max(serverPoints, receiverPoints))
-            return TennisGameStatus.FINISHED;
+        if (isFinished()) return TennisGameStatus.FINISHED;
         return TennisGameStatus.STARTED;
+    }
+
+    private boolean isFinished() {
+        return 2 <= Math.abs(serverPoints - receiverPoints) && 4 <= Math.max(serverPoints, receiverPoints);
     }
 }
