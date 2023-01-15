@@ -29,8 +29,9 @@ class TennisGame {
     public TennisGameStatus status() {
         if (isFinished()) return TennisGameStatus.FINISHED;
         if (isDeuce()) return TennisGameStatus.DEUCE;
-        if (isAdvantageIn())
-            return TennisGameStatus.ADVANTAGE_IN;
+        if (isAdvantageIn()) return TennisGameStatus.ADVANTAGE_IN;
+        if (3 <= Math.min(serverPoints, receiverPoints) && 1 == receiverPoints - serverPoints)
+            return TennisGameStatus.ADVANTAGE_OUT;
         return TennisGameStatus.STARTED;
     }
 
