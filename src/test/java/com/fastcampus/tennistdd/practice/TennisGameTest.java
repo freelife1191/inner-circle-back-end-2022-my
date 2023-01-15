@@ -50,12 +50,14 @@ class TennisGameTest {
 
     private class TennisGame {
         private int serverPoints;
+        private int receiverPoints;
 
         public void serverScores() {
             ++serverPoints;
         }
 
         public void receiverScores() {
+            ++receiverPoints;
         }
 
         public int serverPoint() {
@@ -63,7 +65,7 @@ class TennisGameTest {
         }
 
         public int receiverPoint() {
-            return 0;
+            return receiverPoints;
         }
 
         public TennisGameStatus status() {
