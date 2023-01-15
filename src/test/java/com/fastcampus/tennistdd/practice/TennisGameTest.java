@@ -43,8 +43,8 @@ class TennisGameTest {
             return 0;
         }
 
-        public Object status() {
-            return new Object();
+        public TennisGameStatus status() {
+            return TennisGameStatus.STARTED;
         }
     }
 
