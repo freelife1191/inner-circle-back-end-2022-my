@@ -30,9 +30,12 @@ class TennisGame {
         if (isFinished()) return TennisGameStatus.FINISHED;
         if (isDeuce()) return TennisGameStatus.DEUCE;
         if (isAdvantageIn()) return TennisGameStatus.ADVANTAGE_IN;
-        if (3 <= Math.min(serverPoints, receiverPoints) && 1 == receiverPoints - serverPoints)
-            return TennisGameStatus.ADVANTAGE_OUT;
+        if (isAdvantageOut()) return TennisGameStatus.ADVANTAGE_OUT;
         return TennisGameStatus.STARTED;
+    }
+
+    private boolean isAdvantageOut() {
+        return 3 <= Math.min(serverPoints, receiverPoints) && 1 == receiverPoints - serverPoints;
     }
 
     private boolean isAdvantageIn() {
