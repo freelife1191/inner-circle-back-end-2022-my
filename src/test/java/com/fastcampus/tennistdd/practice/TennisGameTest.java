@@ -53,6 +53,9 @@ class TennisGameTest {
             ++serverPoints;
         }
 
+        public void receiverScores() {
+        }
+
         public int serverPoint() {
             return serverPoints;
         }
