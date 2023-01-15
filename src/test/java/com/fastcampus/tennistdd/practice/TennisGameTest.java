@@ -111,4 +111,20 @@ class TennisGameTest {
         assertThat(game.status()).isEqualTo(TennisGameStatus.ADVANTAGE_IN);
     }
 
+    @Test
+    @DisplayName("DEUCE 일 때 receiver 가 득점하면 ADVANTAGE_OUT 이다")
+    void case6() {
+        final TennisGame game = new TennisGame();
+        game.serverScores();
+        game.serverScores();
+        game.serverScores();
+        game.receiverScores();
+        game.receiverScores();
+        game.receiverScores();
+
+        game.receiverScores();
+
+        assertThat(game.status()).isEqualTo(TennisGameStatus.ADVANTAGE_OUT);
+    }
+
 }
