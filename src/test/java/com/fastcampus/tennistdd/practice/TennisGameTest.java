@@ -36,6 +36,13 @@ class TennisGameTest {
         assertThat(game.status()).isEqualTo(TennisGameStatus.STARTED);
     }
 
+    @Test
+    void case1() {
+        final TennisGame game = new TennisGame();
+
+        game.serverScores();
+    }
+
     private class TennisGame {
         public int serverPoint() {
             return 0;
