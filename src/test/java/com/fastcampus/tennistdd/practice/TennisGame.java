@@ -28,9 +28,12 @@ class TennisGame {
 
     public TennisGameStatus status() {
         if (isFinished()) return TennisGameStatus.FINISHED;
-        if (3 <= Math.min(serverPoints, receiverPoints) && serverPoints == receiverPoints)
-            return TennisGameStatus.DEUCE;
+        if (isDeuce()) return TennisGameStatus.DEUCE;
         return TennisGameStatus.STARTED;
+    }
+
+    private boolean isDeuce() {
+        return 3 <= Math.min(serverPoints, receiverPoints) && serverPoints == receiverPoints;
     }
 
     private boolean isFinished() {
