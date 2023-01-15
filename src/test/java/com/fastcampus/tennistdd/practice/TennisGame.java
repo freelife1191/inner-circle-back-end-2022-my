@@ -18,11 +18,11 @@ class TennisGame {
         if (isFinished()) throw new IllegalStateException();
     }
 
-    public int serverPoints() {
+    public int getServerPoints() {
         return serverPoints;
     }
 
-    public int receiverPoints() {
+    public int getReceiverPoints() {
         return receiverPoints;
     }
 

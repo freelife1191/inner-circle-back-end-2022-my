@@ -32,8 +32,8 @@ class TennisGameTest {
     void case0() {
         final TennisGame game = new TennisGame();
 
-        assertThat(game.serverPoints()).isZero();
-        assertThat(game.receiverPoints()).isZero();
+        assertThat(game.getServerPoints()).isZero();
+        assertThat(game.getReceiverPoints()).isZero();
         assertThat(game.status()).isEqualTo(TennisGameStatus.STARTED);
     }
 
@@ -46,8 +46,8 @@ class TennisGameTest {
         game.receiverScores();
         game.receiverScores();
 
-        assertThat(game.serverPoints()).isEqualTo(1);
-        assertThat(game.receiverPoints()).isEqualTo(2);
+        assertThat(game.getServerPoints()).isEqualTo(1);
+        assertThat(game.getReceiverPoints()).isEqualTo(2);
     }
 
     @Test
@@ -112,7 +112,7 @@ class TennisGameTest {
     }
 
     @Test
-    @DisplayName("DEUCE 일 때 receiver 가 득점하면 ADVANTAGE_OUT 이다")
+    @DisplayName("DEUCE 일 때 receiver가 득점하면 ADVANTAGE_OUT 이다")
     void case6() {
         final TennisGame game = new TennisGame();
         game.serverScores();
