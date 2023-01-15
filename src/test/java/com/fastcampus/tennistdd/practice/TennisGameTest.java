@@ -1,5 +1,6 @@
 package com.fastcampus.tennistdd.practice;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class TennisGameTest {
 
     @Test
+    @DisplayName("생성자가 기대하는 초기 상태를 가진 객체를 반환한다.")
     void case0() {
         final TennisGame game = new TennisGame();
 
