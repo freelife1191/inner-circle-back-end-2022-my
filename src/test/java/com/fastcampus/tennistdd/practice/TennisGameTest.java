@@ -31,8 +31,8 @@ class TennisGameTest {
     void case0() {
         final TennisGame game = new TennisGame();
 
-        assertThat(game.serverPoint()).isZero();
-        assertThat(game.receiverPoint()).isZero();
+        assertThat(game.serverPoints()).isZero();
+        assertThat(game.receiverPoints()).isZero();
         assertThat(game.status()).isEqualTo(TennisGameStatus.STARTED);
     }
 
@@ -44,8 +44,8 @@ class TennisGameTest {
         game.receiverScores();
         game.receiverScores();
 
-        assertThat(game.serverPoint()).isEqualTo(1);
-        assertThat(game.receiverPoint()).isEqualTo(2);
+        assertThat(game.serverPoints()).isEqualTo(1);
+        assertThat(game.receiverPoints()).isEqualTo(2);
     }
 
     private class TennisGame {
@@ -60,11 +60,11 @@ class TennisGameTest {
             ++receiverPoints;
         }
 
-        public int serverPoint() {
+        public int serverPoints() {
             return serverPoints;
         }
 
-        public int receiverPoint() {
+        public int receiverPoints() {
             return receiverPoints;
         }
 
