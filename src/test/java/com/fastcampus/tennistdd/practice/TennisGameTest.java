@@ -1,5 +1,7 @@
 package com.fastcampus.tennistdd.practice;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Tennis Game
  * <p>
@@ -20,4 +22,9 @@ package com.fastcampus.tennistdd.practice;
  * 클래스에는 최소 두 개의 메서드가 있어야 한다. 스코어 조회(Read), 그리고 득점(Update). 코딩테스트가 아니므로, 클래스 디자인은 자유롭게!
  */
 class TennisGameTest {
+
+    @Test
+    void case0() {
+        new TennisGame();
+    }
 }
