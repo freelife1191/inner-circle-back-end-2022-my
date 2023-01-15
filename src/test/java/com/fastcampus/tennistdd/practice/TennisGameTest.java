@@ -46,11 +46,14 @@ class TennisGameTest {
     }
 
     private class TennisGame {
+        private int serverPoints;
+
         public void serverScores() {
+            ++serverPoints;
         }
 
         public int serverPoint() {
-            return 0;
+            return serverPoints;
         }
 
         public int receiverPoint() {
