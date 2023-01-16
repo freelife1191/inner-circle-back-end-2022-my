@@ -97,7 +97,7 @@ public class TennisGameAnnouncingPresenterTest {
                 final String receiverPointsPresentation = presentPoints(request.getReceiverPoints());
                 if (request.getServerPoints() != request.getReceiverPoints())
                     return "%s %s".formatted(serverPointsPresentation, receiverPointsPresentation);
-                return "love all";
+                return "%s all".formatted(serverPointsPresentation);
             }
             return "deuce";
         }
