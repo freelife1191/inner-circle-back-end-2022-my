@@ -6,9 +6,12 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_deuce() {
-        new TennisGameAnnouncingPresenter();
+        // system under test
+        final TennisGameAnnouncingPresenter sut = new TennisGameAnnouncingPresenter();
+
+        sut.present(-1, -1, null);
     }
 
-    private class TennisGameAnnouncingPresenter {
+    private static class TennisGameAnnouncingPresenter {
     }
 }
