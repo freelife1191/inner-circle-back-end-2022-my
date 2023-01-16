@@ -6,5 +6,6 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_deuce() {
+        new TennisGameAnnouncingPresenter();
     }
 }
