@@ -20,11 +20,13 @@ public class TennisGameAnnouncingPresenterTest {
 
         @Test
         void ctor_illegal_args() {
-            assertThatThrownBy(() -> new PresentTennisGameRequest(-1, 0, TennisGameStatus.STARTED))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
-            assertThatThrownBy(() -> new PresentTennisGameRequest(0, -1, TennisGameStatus.STARTED))
-                .isExactlyInstanceOf(IllegalArgumentException.class);
-            assertThatThrownBy(() -> new PresentTennisGameRequest(0, 0, null))
+            assertConstructorThrowsException(-1, 0, TennisGameStatus.STARTED);
+            assertConstructorThrowsException(0, -1, TennisGameStatus.STARTED);
+            assertConstructorThrowsException(0, 0, null);
+        }
+
+        private void assertConstructorThrowsException(int serverPoints, int receiverPoints, TennisGameStatus started) {
+            assertThatThrownBy(() -> new PresentTennisGameRequest(serverPoints, receiverPoints, started))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
         }
     }
