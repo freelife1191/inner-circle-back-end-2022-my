@@ -57,11 +57,15 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_started() {
-        final PresentTennisGameRequest request = new PresentTennisGameRequest(0, 0, TennisGameStatus.STARTED);
+        assertStartedStatusResult(0, 0, "love all");
+    }
+
+    private void assertStartedStatusResult(final int serverPoints, final int receiverPoints, final String expected) {
+        final PresentTennisGameRequest request = new PresentTennisGameRequest(serverPoints, receiverPoints, TennisGameStatus.STARTED);
 
         final String result = sut.present(request);
 
-        assertThat(result).isEqualTo("love all");
+        assertThat(result).isEqualTo(expected);
     }
 
     @Nested
