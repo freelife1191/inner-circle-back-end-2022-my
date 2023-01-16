@@ -92,9 +92,21 @@ public class TennisGameAnnouncingPresenterTest {
             else if (TennisGameStatus.FINISHED == request.getStatus()) {
                 return request.getServerPoints() > request.getReceiverPoints() ? "server win!" : "receiver win!";
             } else if (TennisGameStatus.STARTED == request.getStatus()) {
+                final String serverPointsPresentation = presentPoints(request.getServerPoints());
+                final String receiverPointsPresentation = presentPoints(request.getReceiverPoints());
+                if (request.getServerPoints() != request.getReceiverPoints())
+                    return "%s %s".formatted(serverPointsPresentation, receiverPointsPresentation);
                 return "love all";
             }
             return "deuce";
+        }
+
+        private String presentPoints(final int points) {
+            return switch (points) {
+                case 0 -> "love";
+                case 1 -> "fifteen";
+                default -> throw new IllegalArgumentException();
+            };
         }
     }
 }
