@@ -30,11 +30,11 @@ class TennisGameTest {
     @Test
     @DisplayName("생성자가 기대하는 초기 상태를 가진 객체를 반환한다.")
     void case0() {
-        final TennisGame game = new TennisGame();
+        final TennisGame newlyCreatedGame = new TennisGame();
 
-        assertThat(game.getServerPoints()).isZero();
-        assertThat(game.getReceiverPoints()).isZero();
-        assertThat(game.status()).isEqualTo(TennisGameStatus.STARTED);
+        assertThat(newlyCreatedGame.getServerPoints()).isZero();
+        assertThat(newlyCreatedGame.getReceiverPoints()).isZero();
+        assertThat(newlyCreatedGame.status()).isEqualTo(TennisGameStatus.STARTED);
     }
 
     @Test
@@ -62,11 +62,11 @@ class TennisGameTest {
     @Test
     @DisplayName("게임이 이미 끝났을 때 점수를 추가하면 기대하는 예외를 던진다.")
     void case3() {
-        final TennisGame game = createAndPlayUntil(4, 0);
+        final TennisGame finishedGame = createAndPlayUntil(4, 0);
 
-        assertThatThrownBy(game::serverScores)
+        assertThatThrownBy(finishedGame::serverScores)
             .isExactlyInstanceOf(IllegalStateException.class);
-        assertThatThrownBy(game::receiverScores)
+        assertThatThrownBy(finishedGame::receiverScores)
             .isExactlyInstanceOf(IllegalStateException.class);
     }
 
@@ -82,21 +82,21 @@ class TennisGameTest {
     @Test
     @DisplayName("DEUCE 일 때 server가 득점하면 ADVANTAGE_IN 이다")
     void case5() {
-        final TennisGame game = createAndPlayUntil(3, 3);
+        final TennisGame deucedGame = createAndPlayUntil(3, 3);
 
-        game.serverScores();
+        deucedGame.serverScores();
 
-        assertThat(game.status()).isEqualTo(TennisGameStatus.ADVANTAGE_IN);
+        assertThat(deucedGame.status()).isEqualTo(TennisGameStatus.ADVANTAGE_IN);
     }
 
     @Test
     @DisplayName("DEUCE 일 때 receiver가 득점하면 ADVANTAGE_OUT 이다")
     void case6() {
-        final TennisGame game = createAndPlayUntil(3, 3);
+        final TennisGame deucedGame = createAndPlayUntil(3, 3);
 
-        game.receiverScores();
+        deucedGame.receiverScores();
 
-        assertThat(game.status()).isEqualTo(TennisGameStatus.ADVANTAGE_OUT);
+        assertThat(deucedGame.status()).isEqualTo(TennisGameStatus.ADVANTAGE_OUT);
     }
 
     private TennisGame createAndPlayUntil(final int serverPoints, final int receiversPoints) {
