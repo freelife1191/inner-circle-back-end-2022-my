@@ -3,6 +3,7 @@ package com.fastcampus.tennistdd.practice;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TennisGameAnnouncingPresenterTest {
@@ -11,8 +12,11 @@ public class TennisGameAnnouncingPresenterTest {
     void case_deuce() {
         // system under test
         final TennisGameAnnouncingPresenter sut = new TennisGameAnnouncingPresenter();
+        final PresentTennisGameRequest request = new PresentTennisGameRequest(3, 3, TennisGameStatus.DEUCE);
 
-        sut.present(new PresentTennisGameRequest(-1, -1, null));
+        final String result = sut.present(request);
+
+        assertThat(result).isEqualTo("deuce");
     }
 
     @Nested
