@@ -47,7 +47,7 @@ class TennisGameTest {
     }
 
     @Test
-    @DisplayName("serverScores, receiverScores 메서드가 기대하는대로 객체를 상태를 변경한다.")
+    @DisplayName("serverScores, receiverScores 메서드가 기대하는 업데이트를 일으킨다.")
     void case1() {
         final TennisGame game = new TennisGame();
 
