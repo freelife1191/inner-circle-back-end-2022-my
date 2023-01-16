@@ -19,6 +19,15 @@ public class TennisGameAnnouncingPresenterTest {
         assertThat(result).isEqualTo("deuce");
     }
 
+    @Test
+    void case_ad_in() {
+        final PresentTennisGameRequest request = new PresentTennisGameRequest(4, 3, TennisGameStatus.ADVANTAGE_IN);
+
+        final String result = sut.present(request);
+
+        assertThat(result).isEqualTo("ad-in");
+    }
+
     @Nested
     class PresentTennisGameRequestTest {
 
