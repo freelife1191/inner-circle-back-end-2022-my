@@ -9,11 +9,11 @@ public class TennisGameAnnouncingPresenterTest {
         // system under test
         final TennisGameAnnouncingPresenter sut = new TennisGameAnnouncingPresenter();
 
-        sut.present(-1, -1, null);
+        sut.present(new PresentTennisGameRequest(-1, -1, null));
     }
 
     private static class TennisGameAnnouncingPresenter {
-        public String present(final int serverPoints, final int receiverPoints, final TennisGameStatus status) {
+        public String present(final PresentTennisGameRequest request) {
             return null;
         }
     }
