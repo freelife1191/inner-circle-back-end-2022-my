@@ -23,7 +23,10 @@ public class TennisGameAnnouncingPresenterTest {
             assertThatThrownBy(() -> new PresentTennisGameRequest(-1, 0, TennisGameStatus.STARTED))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
             assertThatThrownBy(() -> new PresentTennisGameRequest(0, -1, TennisGameStatus.STARTED))
-                .isExactlyInstanceOf(IllegalArgumentException.class);        }
+                .isExactlyInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> new PresentTennisGameRequest(0, 0, null))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     private static class TennisGameAnnouncingPresenter {
