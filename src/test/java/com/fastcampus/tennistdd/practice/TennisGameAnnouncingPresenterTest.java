@@ -28,6 +28,15 @@ public class TennisGameAnnouncingPresenterTest {
         assertThat(result).isEqualTo("ad-in");
     }
 
+    @Test
+    void case_ad_out() {
+        final PresentTennisGameRequest request = new PresentTennisGameRequest(3, 4, TennisGameStatus.ADVANTAGE_OUT);
+
+        final String result = sut.present(request);
+
+        assertThat(result).isEqualTo("ad-out");
+    }
+
     @Nested
     class PresentTennisGameRequestTest {
 
