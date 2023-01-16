@@ -1,6 +1,9 @@
 package com.fastcampus.tennistdd.practice;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TennisGameAnnouncingPresenterTest {
 
@@ -10,6 +13,16 @@ public class TennisGameAnnouncingPresenterTest {
         final TennisGameAnnouncingPresenter sut = new TennisGameAnnouncingPresenter();
 
         sut.present(new PresentTennisGameRequest(-1, -1, null));
+    }
+
+    @Nested
+    class PresentTennisGameRequestTest {
+
+        @Test
+        void ctor_illegal_args() {
+            assertThatThrownBy(() -> new PresentTennisGameRequest(-1, 0, TennisGameStatus.STARTED))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     private static class TennisGameAnnouncingPresenter {
