@@ -1,4 +1,4 @@
-package com.fastcampus.tennistdd.practice2;
+package com.fastcampus.tennistdd.practice;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,5 +13,8 @@ public class TennisGameAnnouncingPresenterTest {
     }
 
     private static class TennisGameAnnouncingPresenter {
+        public String present(final int serverPoints, final int receiverPoints, final TennisGameStatus status) {
+            return null;
+        }
     }
 }
