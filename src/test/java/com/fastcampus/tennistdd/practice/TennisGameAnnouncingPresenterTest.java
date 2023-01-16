@@ -7,11 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TennisGameAnnouncingPresenterTest {
+    // system under test
+    private final TennisGameAnnouncingPresenter sut = new TennisGameAnnouncingPresenter();
 
     @Test
     void case_deuce() {
-        // system under test
-        final TennisGameAnnouncingPresenter sut = new TennisGameAnnouncingPresenter();
         final PresentTennisGameRequest request = new PresentTennisGameRequest(3, 3, TennisGameStatus.DEUCE);
 
         final String result = sut.present(request);
