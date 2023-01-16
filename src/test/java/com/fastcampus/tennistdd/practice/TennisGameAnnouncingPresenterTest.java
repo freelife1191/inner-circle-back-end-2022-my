@@ -104,11 +104,11 @@ public class TennisGameAnnouncingPresenterTest {
         }
 
         private String presentStarted(final int serverPoints, final int receiverPoints) {
-            final String serverPointsPresentation = presentPoints(serverPoints);
-            final String receiverPointsPresentation = presentPoints(receiverPoints);
-            if (serverPoints != receiverPoints)
-                return "%s %s".formatted(serverPointsPresentation, receiverPointsPresentation);
-            return "%s all".formatted(serverPointsPresentation);
+            return serverPoints == receiverPoints ?
+                "%s all".formatted(presentPoints(serverPoints)) :
+                "%s %s".formatted(
+                    presentPoints(serverPoints),
+                    presentPoints(receiverPoints));
         }
 
         private String presentPoints(final int points) {
