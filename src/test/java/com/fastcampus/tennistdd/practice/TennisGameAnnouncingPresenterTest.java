@@ -22,7 +22,8 @@ public class TennisGameAnnouncingPresenterTest {
         void ctor_illegal_args() {
             assertThatThrownBy(() -> new PresentTennisGameRequest(-1, 0, TennisGameStatus.STARTED))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
-        }
+            assertThatThrownBy(() -> new PresentTennisGameRequest(0, -1, TennisGameStatus.STARTED))
+                .isExactlyInstanceOf(IllegalArgumentException.class);        }
     }
 
     private static class TennisGameAnnouncingPresenter {
