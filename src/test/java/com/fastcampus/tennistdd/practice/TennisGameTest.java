@@ -26,6 +26,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * 클래스에는 최소 두 개의 메서드가 있어야 한다. 스코어 조회(Read), 그리고 득점(Update). 코딩테스트가 아니므로, 클래스 디자인은 자유롭게!
  */
 class TennisGameTest {
+    private TennisGame createAndPlayUntil(final int serverPoints, final int receiversPoints) {
+        final TennisGame game = new TennisGame();
+        for (int i = 0; i < serverPoints; i++)
+            game.serverScores();
+        for (int i = 0; i < receiversPoints; i++)
+            game.receiverScores();
+        return game;
+    }
+
 
     @Test
     @DisplayName("생성자가 기대하는 초기 상태를 가진 객체를 반환한다.")
@@ -97,15 +106,6 @@ class TennisGameTest {
         deucedGame.receiverScores();
 
         assertThat(deucedGame.status()).isEqualTo(TennisGameStatus.ADVANTAGE_OUT);
-    }
-
-    private TennisGame createAndPlayUntil(final int serverPoints, final int receiversPoints) {
-        final TennisGame game = new TennisGame();
-        for (int i = 0; i < serverPoints; i++)
-            game.serverScores();
-        for (int i = 0; i < receiversPoints; i++)
-            game.receiverScores();
-        return game;
     }
 
 }
