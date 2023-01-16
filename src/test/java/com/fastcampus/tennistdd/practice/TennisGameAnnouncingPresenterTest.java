@@ -60,6 +60,7 @@ public class TennisGameAnnouncingPresenterTest {
         assertStartedStatusResult(0, 0, "love all");
         assertStartedStatusResult(0, 1, "love fifteen");
         assertStartedStatusResult(1, 1, "fifteen all");
+        assertStartedStatusResult(1, 2, "fifteen thirty");
     }
 
     private void assertStartedStatusResult(final int serverPoints, final int receiverPoints, final String expected) {
