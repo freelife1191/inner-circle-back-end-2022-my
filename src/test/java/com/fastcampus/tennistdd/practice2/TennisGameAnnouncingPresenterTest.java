@@ -8,4 +8,7 @@ public class TennisGameAnnouncingPresenterTest {
     void case_deuce() {
         new TennisGameAnnouncingPresenter();
     }
+
+    private class TennisGameAnnouncingPresenter {
+    }
 }
