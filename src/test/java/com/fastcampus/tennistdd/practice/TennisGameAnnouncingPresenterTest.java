@@ -46,6 +46,15 @@ public class TennisGameAnnouncingPresenterTest {
         assertThat(result).isEqualTo("server win!");
     }
 
+    @Test
+    void case_finished_and_receiver_win() {
+        final PresentTennisGameRequest request = new PresentTennisGameRequest(0, 4, TennisGameStatus.FINISHED);
+
+        final String result = sut.present(request);
+
+        assertThat(result).isEqualTo("receiver win!");
+    }
+
     @Nested
     class PresentTennisGameRequestTest {
 
