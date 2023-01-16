@@ -12,7 +12,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_deuce() {
-        final PresentTennisGameRequest request = new PresentTennisGameRequest(3, 3, TennisGameStatus.DEUCE);
+        final var request = new PresentTennisGameRequest(3, 3, TennisGameStatus.DEUCE);
 
         final String result = sut.present(request);
 
@@ -21,7 +21,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_ad_in() {
-        final PresentTennisGameRequest request = new PresentTennisGameRequest(4, 3, TennisGameStatus.ADVANTAGE_IN);
+        final var request = new PresentTennisGameRequest(4, 3, TennisGameStatus.ADVANTAGE_IN);
 
         final String result = sut.present(request);
 
@@ -30,7 +30,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_ad_out() {
-        final PresentTennisGameRequest request = new PresentTennisGameRequest(3, 4, TennisGameStatus.ADVANTAGE_OUT);
+        final var request = new PresentTennisGameRequest(3, 4, TennisGameStatus.ADVANTAGE_OUT);
 
         final String result = sut.present(request);
 
@@ -39,7 +39,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_finished_and_sever_win() {
-        final PresentTennisGameRequest request = new PresentTennisGameRequest(4, 0, TennisGameStatus.FINISHED);
+        final var request = new PresentTennisGameRequest(4, 0, TennisGameStatus.FINISHED);
 
         final String result = sut.present(request);
 
@@ -48,7 +48,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_finished_and_receiver_win() {
-        final PresentTennisGameRequest request = new PresentTennisGameRequest(0, 4, TennisGameStatus.FINISHED);
+        final var request = new PresentTennisGameRequest(0, 4, TennisGameStatus.FINISHED);
 
         final String result = sut.present(request);
 
@@ -65,7 +65,7 @@ public class TennisGameAnnouncingPresenterTest {
     }
 
     private void assertStartedStatusResult(final int serverPoints, final int receiverPoints, final String expected) {
-        final PresentTennisGameRequest request = new PresentTennisGameRequest(serverPoints, receiverPoints, TennisGameStatus.STARTED);
+        final var request = new PresentTennisGameRequest(serverPoints, receiverPoints, TennisGameStatus.STARTED);
 
         final String result = sut.present(request);
 
