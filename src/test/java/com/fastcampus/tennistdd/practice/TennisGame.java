@@ -29,8 +29,7 @@ class TennisGame {
     public TennisGameStatus status() {
         if (isFinished()) return TennisGameStatus.FINISHED;
         if (isDeuce()) return TennisGameStatus.DEUCE;
-        if (isAdvantageIn()) return TennisGameStatus.ADVANTAGE_IN;
-        if (isAdvantageOut()) return TennisGameStatus.ADVANTAGE_OUT;
+        if (isAdvantage()) return TennisGameStatus.ADVANTAGE;
         return TennisGameStatus.STARTED;
     }
 
@@ -42,12 +41,8 @@ class TennisGame {
         return isGreaterThanDeucePoints() && serverPoints == receiverPoints;
     }
 
-    private boolean isAdvantageIn() {
-        return isGreaterThanDeucePoints() && 1 == serverPoints - receiverPoints;
-    }
-
-    private boolean isAdvantageOut() {
-        return isGreaterThanDeucePoints() && 1 == receiverPoints - serverPoints;
+    private boolean isAdvantage() {
+        return isGreaterThanDeucePoints() && 1 == Math.abs(serverPoints - receiverPoints);
     }
 
     private boolean isGreaterThanDeucePoints() {

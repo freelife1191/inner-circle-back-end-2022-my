@@ -89,23 +89,13 @@ class TennisGameTest {
     }
 
     @Test
-    @DisplayName("DEUCE 일 때 server가 득점하면 ADVANTAGE_IN 이다")
+    @DisplayName("DEUCE 일 때 득점하면 ADVANTAGE 이다")
     void case5() {
         final TennisGame deucedGame = createAndPlayUntil(3, 3);
 
         deucedGame.serverScores();
 
-        assertThat(deucedGame.status()).isEqualTo(TennisGameStatus.ADVANTAGE_IN);
-    }
-
-    @Test
-    @DisplayName("DEUCE 일 때 receiver가 득점하면 ADVANTAGE_OUT 이다")
-    void case6() {
-        final TennisGame deucedGame = createAndPlayUntil(3, 3);
-
-        deucedGame.receiverScores();
-
-        assertThat(deucedGame.status()).isEqualTo(TennisGameStatus.ADVANTAGE_OUT);
+        assertThat(deucedGame.status()).isEqualTo(TennisGameStatus.ADVANTAGE);
     }
 
 }

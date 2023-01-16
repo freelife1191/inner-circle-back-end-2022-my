@@ -6,5 +6,5 @@ enum TennisGameStatus {
     ADVANTAGE_IN,
     ADVANTAGE_OUT,
     FINISHED,
-    ;
+    ADVANTAGE;
 }

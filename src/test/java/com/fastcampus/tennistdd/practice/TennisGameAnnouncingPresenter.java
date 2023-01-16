@@ -7,6 +7,7 @@ class TennisGameAnnouncingPresenter {
             case DEUCE -> "deuce";
             case ADVANTAGE_IN -> "ad-in";
             case ADVANTAGE_OUT -> "ad-out";
+            case ADVANTAGE -> "";
             case FINISHED -> presentFinished(request.getServerPoints(), request.getReceiverPoints());
         };
     }
