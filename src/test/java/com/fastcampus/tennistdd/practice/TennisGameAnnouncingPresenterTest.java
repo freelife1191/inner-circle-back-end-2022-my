@@ -109,6 +109,7 @@ public class TennisGameAnnouncingPresenterTest {
                 case 0 -> "love";
                 case 1 -> "fifteen";
                 case 2 -> "thirty";
+                case 3 -> "forty";
                 default -> throw new IllegalArgumentException();
             };
         }
