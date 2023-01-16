@@ -1,12 +1,18 @@
 package com.fastcampus.tennistdd.practice;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.util.Assert;
 
 @Getter
-@RequiredArgsConstructor
 public final class PresentTennisGameRequest {
     private final int serverPoints;
     private final int receiverPoints;
     private final TennisGameStatus status;
+
+    public PresentTennisGameRequest(final int serverPoints, final int receiverPoints, final TennisGameStatus status) {
+        Assert.isTrue(0 <= serverPoints, "serverPoints must not be a negative");
+        this.serverPoints = serverPoints;
+        this.receiverPoints = receiverPoints;
+        this.status = status;
+    }
 }
