@@ -37,7 +37,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     private static class TennisGameAnnouncingPresenter {
         public String present(final PresentTennisGameRequest request) {
-            return null;
+            return "deuce";
         }
     }
 }
