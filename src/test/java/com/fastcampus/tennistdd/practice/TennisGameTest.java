@@ -53,13 +53,7 @@ class TennisGameTest {
     @Test
     @DisplayName("한 플레이어가 2점 이상의 점수차로 4점 이상 득점하면 게임이 끝난다.")
     void case2() {
-        final TennisGame game = new TennisGame();
-
-        game.receiverScores();
-        game.receiverScores();
-        game.serverScores();
-        game.serverScores();
-        game.serverScores();
+        final TennisGame game = createAndPlayUntil(3, 2);
         game.serverScores();
 
         assertThat(game.status()).isEqualTo(TennisGameStatus.FINISHED);
@@ -68,11 +62,7 @@ class TennisGameTest {
     @Test
     @DisplayName("게임이 이미 끝났을 때 점수를 추가하면 기대하는 예외를 던진다.")
     void case3() {
-        final TennisGame game = new TennisGame();
-        game.serverScores();
-        game.serverScores();
-        game.serverScores();
-        game.serverScores();
+        final TennisGame game = createAndPlayUntil(4, 0);
 
         assertThatThrownBy(game::serverScores)
             .isExactlyInstanceOf(IllegalStateException.class);
@@ -83,13 +73,7 @@ class TennisGameTest {
     @Test
     @DisplayName("3 포인트 이상에서 동점이면 DEUCE 이다.")
     void case4() {
-        final TennisGame game = new TennisGame();
-
-        game.serverScores();
-        game.serverScores();
-        game.serverScores();
-        game.receiverScores();
-        game.receiverScores();
+        final TennisGame game = createAndPlayUntil(3, 2);
         game.receiverScores();
 
         assertThat(game.status()).isEqualTo(TennisGameStatus.DEUCE);
@@ -98,13 +82,7 @@ class TennisGameTest {
     @Test
     @DisplayName("DEUCE 일 때 server가 득점하면 ADVANTAGE_IN 이다")
     void case5() {
-        final TennisGame game = new TennisGame();
-        game.serverScores();
-        game.serverScores();
-        game.serverScores();
-        game.receiverScores();
-        game.receiverScores();
-        game.receiverScores();
+        final TennisGame game = createAndPlayUntil(3, 3);
 
         game.serverScores();
 
@@ -114,17 +92,20 @@ class TennisGameTest {
     @Test
     @DisplayName("DEUCE 일 때 receiver가 득점하면 ADVANTAGE_OUT 이다")
     void case6() {
-        final TennisGame game = new TennisGame();
-        game.serverScores();
-        game.serverScores();
-        game.serverScores();
-        game.receiverScores();
-        game.receiverScores();
-        game.receiverScores();
+        final TennisGame game = createAndPlayUntil(3, 3);
 
         game.receiverScores();
 
         assertThat(game.status()).isEqualTo(TennisGameStatus.ADVANTAGE_OUT);
+    }
+
+    private TennisGame createAndPlayUntil(final int serverPoints, final int receiversPoints) {
+        final TennisGame game = new TennisGame();
+        for (int i = 0; i < serverPoints; i++)
+            game.serverScores();
+        for (int i = 0; i < receiversPoints; i++)
+            game.receiverScores();
+        return game;
     }
 
 }
