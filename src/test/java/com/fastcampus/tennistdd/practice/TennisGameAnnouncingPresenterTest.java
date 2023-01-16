@@ -91,16 +91,12 @@ public class TennisGameAnnouncingPresenterTest {
     private static class TennisGameAnnouncingPresenter {
         public String present(final PresentTennisGameRequest request) {
             return switch (request.getStatus()) {
+                case STARTED -> presentStarted(request.getServerPoints(), request.getReceiverPoints());
                 case DEUCE -> "deuce";
                 case ADVANTAGE_IN -> "ad-in";
                 case ADVANTAGE_OUT -> "ad-out";
                 case FINISHED -> presentFinished(request.getServerPoints(), request.getReceiverPoints());
-                case STARTED -> presentStarted(request.getServerPoints(), request.getReceiverPoints());
             };
-        }
-
-        private String presentFinished(int serverPoints, int receiverPoints) {
-            return serverPoints > receiverPoints ? "server win!" : "receiver win!";
         }
 
         private String presentStarted(final int serverPoints, final int receiverPoints) {
@@ -119,6 +115,10 @@ public class TennisGameAnnouncingPresenterTest {
                 case 3 -> "forty";
                 default -> throw new IllegalArgumentException();
             };
+        }
+
+        private String presentFinished(int serverPoints, int receiverPoints) {
+            return serverPoints > receiverPoints ? "server win!" : "receiver win!";
         }
     }
 }
