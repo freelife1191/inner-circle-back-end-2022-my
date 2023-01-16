@@ -21,7 +21,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_ad_in() {
-        final var request = new PresentTennisGameRequest(4, 3, TennisGameStatus.ADVANTAGE_IN);
+        final var request = new PresentTennisGameRequest(4, 3, TennisGameStatus.ADVANTAGE);
 
         final String result = sut.present(request);
 
@@ -30,7 +30,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     @Test
     void case_ad_out() {
-        final var request = new PresentTennisGameRequest(3, 4, TennisGameStatus.ADVANTAGE_OUT);
+        final var request = new PresentTennisGameRequest(3, 4, TennisGameStatus.ADVANTAGE);
 
         final String result = sut.present(request);
 
