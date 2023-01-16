@@ -95,13 +95,17 @@ public class TennisGameAnnouncingPresenterTest {
             else if (TennisGameStatus.FINISHED == request.getStatus()) {
                 return request.getServerPoints() > request.getReceiverPoints() ? "server win!" : "receiver win!";
             } else if (TennisGameStatus.STARTED == request.getStatus()) {
-                final String serverPointsPresentation = presentPoints(request.getServerPoints());
-                final String receiverPointsPresentation = presentPoints(request.getReceiverPoints());
-                if (request.getServerPoints() != request.getReceiverPoints())
-                    return "%s %s".formatted(serverPointsPresentation, receiverPointsPresentation);
-                return "%s all".formatted(serverPointsPresentation);
+                return presentStarted(request.getServerPoints(), request.getReceiverPoints());
             }
             return "deuce";
+        }
+
+        private String presentStarted(final int serverPoints, final int receiverPoints) {
+            final String serverPointsPresentation = presentPoints(serverPoints);
+            final String receiverPointsPresentation = presentPoints(receiverPoints);
+            if (serverPoints != receiverPoints)
+                return "%s %s".formatted(serverPointsPresentation, receiverPointsPresentation);
+            return "%s all".formatted(serverPointsPresentation);
         }
 
         private String presentPoints(final int points) {
