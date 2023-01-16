@@ -5,9 +5,7 @@ class TennisGameAnnouncingPresenter {
         return switch (request.getStatus()) {
             case STARTED -> presentStarted(request.getServerPoints(), request.getReceiverPoints());
             case DEUCE -> "deuce";
-            case ADVANTAGE_IN -> "ad-in";
-            case ADVANTAGE_OUT -> "ad-out";
-            case ADVANTAGE -> "";
+            case ADVANTAGE -> request.getServerPoints() > request.getReceiverPoints() ? "ad-in" : "ad-out";
             case FINISHED -> presentFinished(request.getServerPoints(), request.getReceiverPoints());
         };
     }
