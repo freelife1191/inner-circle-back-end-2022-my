@@ -90,14 +90,13 @@ public class TennisGameAnnouncingPresenterTest {
 
     private static class TennisGameAnnouncingPresenter {
         public String present(final PresentTennisGameRequest request) {
-            if (TennisGameStatus.ADVANTAGE_IN == request.getStatus()) return "ad-in";
-            else if (TennisGameStatus.ADVANTAGE_OUT == request.getStatus()) return "ad-out";
-            else if (TennisGameStatus.FINISHED == request.getStatus()) {
-                return presentFinished(request.getServerPoints(), request.getReceiverPoints());
-            } else if (TennisGameStatus.STARTED == request.getStatus()) {
-                return presentStarted(request.getServerPoints(), request.getReceiverPoints());
-            }
-            return "deuce";
+            return switch (request.getStatus()) {
+                case DEUCE -> "deuce";
+                case ADVANTAGE_IN -> "ad-in";
+                case ADVANTAGE_OUT -> "ad-out";
+                case FINISHED -> presentFinished(request.getServerPoints(), request.getReceiverPoints());
+                case STARTED -> presentStarted(request.getServerPoints(), request.getReceiverPoints());
+            };
         }
 
         private String presentFinished(int serverPoints, int receiverPoints) {
