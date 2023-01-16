@@ -76,7 +76,7 @@ public class TennisGameAnnouncingPresenterTest {
             if (TennisGameStatus.ADVANTAGE_IN == request.getStatus()) return "ad-in";
             else if (TennisGameStatus.ADVANTAGE_OUT == request.getStatus()) return "ad-out";
             else if (TennisGameStatus.FINISHED == request.getStatus()) {
-                return "server win!";
+                return request.getServerPoints() > request.getReceiverPoints() ? "server win!" : "receiver win!";
             }
             return "deuce";
         }
