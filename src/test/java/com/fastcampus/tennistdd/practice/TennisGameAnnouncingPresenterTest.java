@@ -37,6 +37,15 @@ public class TennisGameAnnouncingPresenterTest {
         assertThat(result).isEqualTo("ad-out");
     }
 
+    @Test
+    void case_finished_and_sever_win() {
+        final PresentTennisGameRequest request = new PresentTennisGameRequest(4, 0, TennisGameStatus.FINISHED);
+
+        final String result = sut.present(request);
+
+        assertThat(result).isEqualTo("server win!");
+    }
+
     @Nested
     class PresentTennisGameRequestTest {
 
