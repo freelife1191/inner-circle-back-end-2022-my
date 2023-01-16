@@ -46,6 +46,7 @@ public class TennisGameAnnouncingPresenterTest {
 
     private static class TennisGameAnnouncingPresenter {
         public String present(final PresentTennisGameRequest request) {
+            if (TennisGameStatus.ADVANTAGE_IN == request.getStatus()) return "ad-in";
             return "deuce";
         }
     }
